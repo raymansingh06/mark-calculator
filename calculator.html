@@ -1,0 +1,133 @@
+<html>
+<head>
+	<title>Grading Calculator</title>
+	<style>
+		label {
+			display: block;
+			margin-top: 10px;
+		}
+		input[type="number"] {
+			width: 100px;
+		}
+		.result {
+			display: inline-block;
+			width: 100px;
+			text-align: center;
+			margin-right: 10px;
+		}
+	</style>
+</head>
+<body>
+	<h1>Grading Calculator</h1>
+	<form>
+		<label>Subject 1:<input type="number" id="subject1" min="0" max="100" required></label>
+		<label>Subject 2:<input type="number" id="subject2" min="0" max="100" required></label>
+		<label>Subject 3:<input type="number" id="subject3" min="0" max="100" required></label>
+		<label>Subject 4:<input type="number" id="subject4" min="0" max="100" required></label>
+		<label>Subject 5:<input type="number" id="subject5" min="0" max="100" required></label>
+		<button type="button" onclick="calculateGrade()">Calculate Grade</button>
+	</form>
+	<div>
+		<label>Total Points:</label>
+		<div class="result" id="total"></div>
+		<label>Average:</label>
+		<div class="result" id="average"></div>
+		<label>Grade:</label>
+		<div class="result" id="grade"></div>
+	</div>
+
+	<script>
+		function calculateGrade() {
+			let subject1 = parseFloat(document.getElementById("subject1").value);
+			let subject2 = parseFloat(document.getElementById("subject2").value);
+			let subject3 = parseFloat(document.getElementById("subject3").value);
+			let subject4 = parseFloat(document.getElementById("subject4").value);
+			let subject5 = parseFloat(document.getElementById("subject5").value);
+
+			if (isNaN(subject1)) {
+				subject1 = 0;
+			}
+			if (isNaN(subject2)) {
+				subject2 = 0;
+			}
+			if (isNaN(subject3)) {
+				subject3 = 0;
+			}
+			if (isNaN(subject4)) {
+				subject4 = 0;
+			}
+			if (isNaN(subject5)) {
+				subject5 = 0;
+			}
+
+			if (subject1 <= 35 || subject2 <= 35 || subject3 <= 35 || subject4 <= 35 || subject5 <= 35) {
+				document.getElementById("grade").innerHTML = "F";
+				document.getElementById("total").innerHTML = "";
+				document.getElementById("average").innerHTML = "";
+			} else {
+				let totalPoints = subject1 + subject2 + subject3 + subject4 + subject5;
+				let possiblePoints = 500;
+				let percentage = (totalPoints / possiblePoints) * 100;
+
+				document.getElementById("total").innerHTML = totalPoints;
+				document.getElementById("average").innerHTML = (totalPoints / 5).toFixed(2);
+				
+				if (percentage >= 90) {
+					document.getElementById("grade").innerHTML = "A";
+				} else if (percentage >= 80 && percentage <= 89) {
+					document.getElementById("grade").innerHTML = "B";
+				} else if (percentage >= 70 && percentage <= 79) {
+					document.getElementById("grade").innerHTML = "C";
+                  }  else if (percentage >= 60 && percentage <= 49) {
+					document.getElementById("grade").innerHTML = "D";
+                  }
+                }
+            }
+            function calculateGrade() {
+	let subject1 = parseFloat(document.getElementById("subject1").value);
+	let subject2 = parseFloat(document.getElementById("subject2").value);
+	let subject3 = parseFloat(document.getElementById("subject3").value);
+	let subject4 = parseFloat(document.getElementById("subject4").value);
+	let subject5 = parseFloat(document.getElementById("subject5").value);
+
+	if (isNaN(subject1)) {
+		subject1 = 0;
+	}
+	if (isNaN(subject2)) {
+		subject2 = 0;
+	}
+	if (isNaN(subject3)) {
+		subject3 = 0;
+	}
+	if (isNaN(subject4)) {
+		subject4 = 0;
+	}
+	if (isNaN(subject5)) {
+		subject5 = 0;
+	}
+
+	if (subject1 <= 35 || subject2 <= 35 || subject3 <= 35 || subject4 <= 35 || subject5 <= 35) {
+		document.getElementById("grade").innerHTML = "F";
+		document.getElementById("total").innerHTML = "";
+		document.getElementById("average").innerHTML = "";
+	} else {
+		let totalPoints = subject1 + subject2 + subject3 + subject4 + subject5;
+		let possiblePoints = 500;
+		let percentage = (totalPoints / possiblePoints) * 100;
+
+		document.getElementById("total").innerHTML = totalPoints;
+		document.getElementById("average").innerHTML = (totalPoints / 5).toFixed(2);
+		
+		if (percentage >= 90) {
+			document.getElementById("grade").innerHTML = "A";
+		} else if (percentage >= 80 && percentage <= 89) {
+			document.getElementById("grade").innerHTML = "B";
+		} else if (percentage >= 70 && percentage <= 79) {
+			document.getElementById("grade").innerHTML = "C";
+		} else if (percentage >= 60 && percentage <= 69) {
+			document.getElementById("grade").innerHTML = "D";
+		} else {
+			document.getElementById("grade").innerHTML = "F";
+		}
+	}
+}
